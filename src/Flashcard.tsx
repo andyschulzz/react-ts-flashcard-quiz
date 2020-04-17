@@ -13,7 +13,7 @@ interface Props {
 const Flashcard: React.FC<Props> = ({ flashcard }: Props) => {
   const [flip, setFlip] = useState(false)
   return (
-    <S.Card onClick={(): void => setFlip(!flip)}>
+    <S.Card flip={flip} onClick={(): void => setFlip(!flip)}>
       <S.Front>
         {flashcard.question}
         <S.Options>
