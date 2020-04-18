@@ -31,6 +31,11 @@ const Flashcard: React.FC<Props> = ({ flashcard }: Props) => {
     flashcard.options,
   ])
 
+  useEffect(() => {
+    window.addEventListener('resize', setMaxHeight)
+    return (): void => window.removeEventListener('resize', setMaxHeight)
+  }, [])
+
   return (
     <S.Card
       flip={flip}
@@ -41,7 +46,7 @@ const Flashcard: React.FC<Props> = ({ flashcard }: Props) => {
         {flashcard.question}
         <S.Options>
           {flashcard.options.map((option) => {
-            return <S.Option key={flashcard.id}>{option}</S.Option>
+            return <S.Option key={option}>{option}</S.Option>
           })}
         </S.Options>
       </S.Front>
